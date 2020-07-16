@@ -1,12 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import ToDoItem from "./ToDoItem"
+import ToDoItem from "./ToDoItem";
+import Test from "./Test";
 
 import "./style.css"
 
 /*
   第一种写法
 */
-// function App() {
+// function ToDoList() {
 //   return (
 //     <div>
 //       hello React
@@ -17,9 +18,10 @@ import "./style.css"
 /*
   第二种写法（老版本）
 */
-class App extends Component {
+class ToDoList extends Component {
   constructor(props) {
     super(props);
+    // 当组件的state或者props发生改变的时候，render函数就会被重新执行
     this.state = {
       list: [],
       inputValue: ""
@@ -30,15 +32,20 @@ class App extends Component {
   }
 
   handleBtnClick() {
+    // setState是一个异步函数
     this.setState({
       list: [...this.state.list, this.state.inputValue],
       inputValue: ""
+    }, () => {
+      console.log(this.ul.querySelectorAll('div').length)
     })
   }
 
-  handleInputChange(e) {
+  handleInputChange() {
+    // 由于使用了ref，可将e.target替换为this.input
+    const value = this.input.value;
     this.setState({
-      inputValue: e.target.value
+      inputValue: value
     })
   }
 
@@ -69,24 +76,55 @@ class App extends Component {
     )
   }
 
+  // 组件在被挂在到页面之前，自动执行
+  componentWillMount(){
+    console.log("componentWillMount");
+  }
+
   render() {
+    console.log("render");
     const { inputValue } = this.state;
     return (
       //使用Fragment不会生成dom元素（替代最外层需要包裹div元素）
       <Fragment>
         <div>
-          <input value={inputValue} onChange={this.handleInputChange} />
+          <label htmlFor="insertArea">请输入内容</label>
+          <input ref={(input) => { this.input = input }} id="insertArea" value={inputValue} onChange={this.handleInputChange} />
           <button className="btn" onClick={this.handleBtnClick}>add</button>
         </div>
-        <ul>
+        <ul ref={(ul) => { this.ul = ul }}>
           {this.getToDoItems()}
         </ul>
+        <Test content={inputValue} />
       </Fragment>
     )
   }
+
+  //组件被挂载到页面之后，自动执行
+  componentDidMount(){
+    console.log("componentDidMount");
+  }
+
+  // 组件被更新之前，自动执行
+  shouldComponentUpdate(){
+    console.log("shouldComponentUpdate");
+    return true;
+  }
+
+  // 组件被更新之前，自动执行,但是它在shouldComponentUpdate之后执行
+  //如果shouldComponentUpdate返回true它才执行，返回false此函数就不会执行
+  componentWillUpdate(){
+    console.log("componentWillUpdate");
+  }
+
+  // 组件更新完成之后会被执行
+  componentDidUpdate(){
+    console.log("componentDidUpdate");
+  }
+
 }
 
-export default App;
+export default ToDoList;
 /*
 知识点：
   1.函数后绑定bind改变this指向
