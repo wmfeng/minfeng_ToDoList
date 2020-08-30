@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import 'antd/dist/antd.css';
+import { Input, Button, List } from 'antd';
 import ToDoListUI from './ToDoListUI'
 import store from './store'
-import { getToDoList,getInputChangeAction, getAddTodoItem, getDeleteTodoItem, initListAction } from './store/actionCreateors'
+import { getInputChangeAction, getAddTodoItem, getDeleteTodoItem } from './store/actionCreateors'
 
 class ToDoList extends Component {
   constructor(props) {
     super(props);
+    this.state = store.getState();
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.handleBtnClick = this.handleBtnClick.bind(this);
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
-    this.state = store.getState();
-    store.subscribe(this.handleStoreChange);
+    store.subscribe(this.handleStoreChange)
   }
 
   render() {
@@ -24,19 +25,23 @@ class ToDoList extends Component {
         handleBtnClick={this.handleBtnClick}
         handleDeleteClick={this.handleDeleteClick}
       />
+      // <div style={{ padding: '10px' }}>
+      //   <div>
+      //     <Input onChange={this.handleInputChange} value={this.state.inputValue} style={{ width: '300px', marginRight: '10px' }} placeholder="todo info" />
+      //     <Button onClick={this.handleBtnClick} type="primary">提交</Button>
+      //   </div>
+      //   <List
+      //     style={{ width: '300px', marginTop: '10px' }}
+      //     bordered
+      //     dataSource={this.state.list}
+      //     renderItem={(item, index) => (
+      //       <List.Item onClick={this.handleDeleteClick.bind(this, index)}>
+      //         {item}
+      //       </List.Item>
+      //     )}
+      //   />
+      // </div>
     )
-  }
-
-  componentDidMount() {
-    const action = getToDoList();
-    store.dispatch(action);
-
-    // axios.get('https://www.easy-mock.com/mock/5f13c4e594896b22a7fa7651/api/api/todolist')
-    //   .then((res) => {
-    //     const data = res.data;
-    //     const action = initListAction(data);
-    //     store.dispatch(action);
-    //   })
   }
 
   handleInputChange(e) {
