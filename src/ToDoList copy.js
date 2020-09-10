@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 
-const ToDoList = (props) => {
-    const { list, inputValue, changeInputValue, handleClick, handleDeleteClick } = props;
-    return (
-        <div>
+class ToDoList extends Component {
+    render() {
+        const { list, inputValue, changeInputValue, handleClick, handleDeleteClick } = this.props;
+        return (
             <div>
-                <input value={inputValue} onChange={changeInputValue} />
-                <button onClick={handleClick}>提交</button>
+                <div>
+                    <input value={inputValue} onChange={changeInputValue} />
+                    <button onClick={handleClick}>提交</button>
+                </div>
+                <ul>
+                    {
+                        list.map((item, index) => {
+                            return <li onClick={handleDeleteClick.bind(this,index)} key={index}>{item}</li>
+                        })
+                    }
+                </ul>
             </div>
-            <ul>
-                {
-                    list.map((item, index) => {
-                        return <li onClick={handleDeleteClick.bind(this, index)} key={index}>{item}</li>
-                    })
-                }
-            </ul>
-        </div>
-    )
+        )
+    }
 }
-
 const mapStateToProps = (state) => {
     return {
         inputValue: state.inputValue,
