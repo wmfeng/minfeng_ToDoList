@@ -1,4 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-createGlobalStyle `
+// 不生效
+export const GlobalStyle = createGlobalStyle`
+    background:red;
 `

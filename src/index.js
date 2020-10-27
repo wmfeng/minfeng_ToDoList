@@ -1,12 +1,12 @@
-import React from 'react';
+import React , { Fragment }from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-// import './style.js'
-import './style.css'
+import './style.css';
+import "./static/iconfont/iconfont.css";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Fragment>
     <App />
-  </React.StrictMode>,
+  </Fragment>,
   document.getElementById('root')
 );
