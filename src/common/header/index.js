@@ -113,7 +113,10 @@ const mapStateToProps = (state) => {
     return {
         // focused: state.header.focused
         // 在reduser中使用了immutable库，state中的值是不可以被直接更改的，因此获取state下的值也要相应的改变
-        focused: state.header.get("focused")
+        // focused: state.header.get("focused")
+        // 在src/store/reducer.js中引入redux-immutable，
+        // focused: state.get("header").get("focused") //等价于
+        focused: state.getIn(["header", "focused"])
     }
 };
 
