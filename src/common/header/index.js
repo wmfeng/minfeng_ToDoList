@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import {
@@ -110,7 +110,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        focused: state.focused
+        focused: state.header.focused
     }
 };
 
