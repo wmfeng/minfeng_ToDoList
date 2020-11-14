@@ -20,21 +20,38 @@ import {
 
 class Header extends Component {
     getListArea() {
-        const { focused, list } = this.props;
-        if (focused) {
+        const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props;
+        // 此时的list是immutable类型的数据，需要使用toJS()将其转化为普通的数据类型；
+        const newList = list.toJS();
+        const pageList = [];
+        if (newList.length) {
+            for (let i = (page - 1) * 10; i < page * 10; i++) {
+                pageList.push(
+                    <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+                )
+            }
+        }
+
+        if (focused || mouseIn) {
             return (
                 <SearchInfo>
-                    <SearchInfoTitle>热门搜索
-                                <SearchInfoSwitch>
+                    <SearchInfoTitle
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                    >热门搜索
+                                <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>
                             换一批
                                 </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoWrapper>
 
                         {
-                            list.map(item => {
-                                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-                            })
+                            pageList
+
+                            // 添加换一批之前
+                            // list.map(item => {
+                            //     return <SearchInfoItem key={item}>{item}</SearchInfoItem>
+                            // })
                         }
                     </SearchInfoWrapper>
                 </SearchInfo>
@@ -90,7 +107,10 @@ const mapStateToProps = (state) => {
         // 在src/store/reducer.js中引入redux-immutable，
         // focused: state.get("header").get("focused") //等价于
         focused: state.getIn(["header", "focused"]),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        page: state.getIn(["header", "page"]),
+        mouseIn: state.getIn(["header", "mouseIn"]),
+        totalPage: state.getIn(['header', 'totalPage'])
     }
 };
 
@@ -102,6 +122,20 @@ const mapDispatchToProps = (dispatch) => {
         },
         handleInputBlur() {
             dispatch(actionCreators.searchBlur());
+        },
+        handleMouseEnter() {
+            dispatch(actionCreators.mouseEnter());
+        },
+        handleMouseLeave() {
+            dispatch(actionCreators.mouseLeave());
+        },
+        handleChangePage(page, totalPage) {
+            if (page < totalPage) {
+                dispatch(actionCreators.changePage(page + 1))
+            } else {
+                dispatch(actionCreators.changePage(1))
+            }
+
         }
     }
 }
