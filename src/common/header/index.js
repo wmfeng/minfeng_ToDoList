@@ -1,4 +1,4 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { actionCreators } from "./store";
@@ -20,7 +20,8 @@ import {
 
 class Header extends Component {
     getListArea() {
-        if (this.props.focused) {
+        const { focused, list } = this.props;
+        if (focused) {
             return (
                 <SearchInfo>
                     <SearchInfoTitle>热门搜索
@@ -29,9 +30,9 @@ class Header extends Component {
                                 </SearchInfoSwitch>
                     </SearchInfoTitle>
                     <SearchInfoWrapper>
-                        
+
                         {
-                            this.props.list.map(item=>{
+                            list.map(item => {
                                 return <SearchInfoItem key={item}>{item}</SearchInfoItem>
                             })
                         }
@@ -43,6 +44,7 @@ class Header extends Component {
         }
     }
     render() {
+        const { focused, handleInputFocus, handleInputBlur } = this.props;
         return (
             <HeaderWrapper>
                 <Logo />
@@ -55,17 +57,17 @@ class Header extends Component {
                     </NavItem>
                     <SearchWrapper>
                         <CSSTransition
-                            in={this.props.focused}
+                            in={focused}
                             timeout={200}
                             classNames="slide"
                         >
                             <NavSearch
-                                className={this.props.focused ? "focused" : ""}
-                                onFocus={this.props.handleInputFocus}
-                                onBlur={this.props.handleInputBlur}
+                                className={focused ? "focused" : ""}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
                             ></NavSearch>
                         </CSSTransition>
-                        <i className={this.props.focused ? "focused iconfont" : "iconfont"}>&#xe61d;</i>
+                        <i className={focused ? "focused iconfont" : "iconfont"}>&#xe61d;</i>
                         {this.getListArea()}
                     </SearchWrapper>
                 </Nav>
@@ -88,7 +90,7 @@ const mapStateToProps = (state) => {
         // 在src/store/reducer.js中引入redux-immutable，
         // focused: state.get("header").get("focused") //等价于
         focused: state.getIn(["header", "focused"]),
-        list: state.getIn(['header','list'])
+        list: state.getIn(['header', 'list'])
     }
 };
 
