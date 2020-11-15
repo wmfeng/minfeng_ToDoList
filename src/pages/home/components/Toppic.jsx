@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 
+import {
+    ToppicWrapper
+} from "../style";
+
 class Toppic extends Component{
     render(){
         return (
-            <div>
+            <ToppicWrapper>
                 Toppic
-            </div>
+            </ToppicWrapper>
         )
     }
 }

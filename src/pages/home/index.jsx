@@ -14,7 +14,7 @@ class Home extends Component {
         return (
             <HomeWrapper>
                 <HomeLeft>
-                    <img className='banner-img' src="../../static/images/love.jpg"/>
+                    <img className='banner-img' src={require("../../static/images/love.jpg")}/>
                     <Toppic />
                     <List />
                 </HomeLeft>

@@ -21,3 +21,10 @@ export const HomeRight = styled.div`
 	width: 280px;
 	float: right;
 `;
+
+export const ToppicWrapper = styled.div`
+	overflow: hidden;
+	padding: 20px 0 10px 0;
+	margin-left: -18px;
+	border-bottom: 1px solid #dcdcdc;
+`;
