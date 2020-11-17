@@ -13,14 +13,20 @@ class Toppic extends Component {
         return (
             <ToppicWrapper>
                 {
-                    list.map((item) => {
-                        return (
-                            <ToppicItem key={item.get('id')}>
-                                <img className='topic-pic' src={item.get('imgUrl')} alt='' />
-                    {item.get('title')}
-                            </ToppicItem>
-                        )
-                    })
+                    list.map(item => (
+                        <ToppicItem key={item.get('id')}>
+                            <img className='topic-pic' src={item.get('imgUrl')} alt='' />
+                            {item.get('title')}
+                        </ToppicItem>
+                    ))
+                    // list.map((item) => {
+                    //     return (
+                    //         <ToppicItem key={item.get('id')}>
+                    //             <img className='topic-pic' src={item.get('imgUrl')} alt='' />
+                    // {item.get('title')}
+                    //         </ToppicItem>
+                    //     )
+                    // })
                 }
 
             </ToppicWrapper>
@@ -28,7 +34,7 @@ class Toppic extends Component {
     }
 }
 
-const mapState = (state) => ({
-    list:state.get('home').get('topicList')
+const mapStateToProps = (state) => ({
+    list: state.get('home').get('topicList')
 })
-export default connect(mapState, null)(Toppic);
+export default connect(mapStateToProps, null)(Toppic);
