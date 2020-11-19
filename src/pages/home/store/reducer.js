@@ -13,7 +13,7 @@ const defaultState = fromJS({
             imgUrl: 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1411604405,573366683&fm=26&gp=0.jpg'
         }
     ],
-    articleList:[
+    articleList: [
         {
             id: 1,
             title: '11',
@@ -47,6 +47,12 @@ const defaultState = fromJS({
 
 export default (state = defaultState, action) => {
     switch (action.type) {
+        case 'change_home_data':
+            return state.merge({
+                topicList: fromJS(action.topicList),
+                articleList: fromJS(action.articleList),
+                recommendList: fromJS(action.recommendList),
+            })
         default:
             return state;
     }
