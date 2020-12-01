@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -6,7 +6,7 @@ import {
     ToppicItem
 } from '../style';
 
-class Toppic extends Component {
+class Toppic extends PureComponent {
 
     render() {
         const { list } = this.props;

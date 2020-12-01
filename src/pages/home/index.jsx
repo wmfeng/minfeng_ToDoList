@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+// 使用PureComponent可提升性能，相当于shouldComponentUpdate周期函数（*使用前提是项目中使用immutables.js来管理数据，否则会有其他的问题）
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {
     HomeWrapper,
@@ -13,7 +14,7 @@ import Writer from './components/Writer';
 import { actionCreators } from './store';
 
 
-class Home extends Component {
+class Home extends PureComponent {
 
     handleScrollTop() {
         window.scrollTo(0, 0);
