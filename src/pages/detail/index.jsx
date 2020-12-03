@@ -5,6 +5,7 @@ import {
     Header,
     Content
 } from './style';
+import { actionCreators } from './store';
 
 class Detail extends Component {
     render() {
@@ -12,9 +13,13 @@ class Detail extends Component {
         return (
             <DetailWrapper>
                 <Header>{title}</Header>
-                <Content dangerouslySetInnerHTML={{ __html:content }} />
+                <Content dangerouslySetInnerHTML={{ __html: content }} />
             </DetailWrapper>
         )
+    }
+    componentDidMount() {
+        const { getDetail } = this.props;
+        getDetail();
     }
 }
 
@@ -23,4 +28,10 @@ const mapState = (state) => ({
     content: state.getIn(['detail', 'content'])
 })
 
-export default connect(mapState, null)(Detail);
+const mapDispatch = (dispatch) => ({
+    getDetail() {
+        dispatch(actionCreators.getDetail())
+    }
+})
+
+export default connect(mapState, mapDispatch)(Detail);

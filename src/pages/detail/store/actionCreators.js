@@ -1,10 +1,17 @@
 import axios from 'axios';
 import * as constants from './constants';
-import {fromJS} from 'immutable';
 
-const changeHomeData = (result) => ({
-    type: constants.CHANGE_HOME_DATA,
-    articleList: result.articleList,
-    recommendList: result.recommendList,
-    topicList: result.topicList
+const changeDetail = (title, content) => ({
+    type: constants.CHANGE_DETAIL,
+    title,
+    content
 })
+
+export const getDetail = () => {
+    return (dispatch) => {
+        axios.get('/api/detail.json').then(res => {
+            const result = res.data.data;
+            dispatch(changeDetail(result.title, result.content))
+        })
+    }
+}
