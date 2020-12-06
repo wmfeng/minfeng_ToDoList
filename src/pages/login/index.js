@@ -8,7 +8,6 @@ class Login extends PureComponent {
 	render() {
 		const { loginStatus, login } = this.props;
 		if (!loginStatus) {
-			debugger
 			return (
 				<LoginWrapper>
 					<LoginBox>
@@ -19,7 +18,6 @@ class Login extends PureComponent {
 				</LoginWrapper>
 			)
 		} else {
-			debugger
 			return <Redirect to='/' />
 		}
 	}

@@ -74,9 +74,9 @@ class Header extends Component {
                     <NavItem className="left active">首页</NavItem>
                     <NavItem className="left">下载App</NavItem>
                     {
-                        login ? 
-                        <NavItem onClick={logout} className="right">退出</NavItem> : 
-                        <Link to="/login"><NavItem className="right">登陆</NavItem></Link>
+                        login ?
+                            <NavItem onClick={logout} className="right">退出</NavItem> :
+                            <Link to="/login"><NavItem className="right">登陆</NavItem></Link>
                     }
 
                     <NavItem className="right">
@@ -99,9 +99,11 @@ class Header extends Component {
                     </SearchWrapper>
                 </Nav>
                 <Addition>
-                    <Button className="writting">
-                        <i className="iconfont">&#xe615;</i>
+                    <Link to='/write'>
+                        <Button className="writting">
+                            <i className="iconfont">&#xe615;</i>
                         写文章</Button>
+                    </Link>
                     <Button className="reg">注册</Button>
                 </Addition>
             </HeaderWrapper>
@@ -154,7 +156,7 @@ const mapDispatchToProps = (dispatch) => {
                 dispatch(actionCreators.changePage(1))
             }
         },
-        logout(){
+        logout() {
             dispatch(loginActionCreators.logout())
         }
     }
