@@ -5,7 +5,7 @@ import Header from "./common/header/index";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Write from "./pages/write";
-import Detail from "./pages/detail";
+import Detail from "./pages/detail/loadable";
 import store from "./store"
 
 class App extends Component {

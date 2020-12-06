@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import {
     DetailWrapper,
     Header,
@@ -12,7 +13,7 @@ class Detail extends Component {
         const { title, content } = this.props;
         /*
         如果使用/detail?id=1 这种方式传参时，获取参数：this.props.location.search: "?id=1"，获取回来的值需要做处理； 此时App.js中的路由无需做任何处理
-        */ 
+        */
         return (
             <DetailWrapper>
                 <Header>{title}</Header>
@@ -21,7 +22,7 @@ class Detail extends Component {
         )
     }
     componentDidMount() {
-        const { getDetail ,match} = this.props;
+        const { getDetail, match } = this.props;
         getDetail(match.params.id);
     }
 }
@@ -37,4 +38,4 @@ const mapDispatch = (dispatch) => ({
     }
 })
 
-export default connect(mapState, mapDispatch)(Detail);
+export default connect(mapState, mapDispatch)(withRouter(Detail));
