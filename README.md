@@ -1,4 +1,4 @@
-<!-- 在本极部署项目  xmapp -->
+<!-- 在本机部署项目  xmapp -->
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
