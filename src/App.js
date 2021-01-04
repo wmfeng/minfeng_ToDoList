@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import Header from "./common/header/index.jsx";
+import Home from "./home";
 
 class App extends Component {
-  render(){
+  render() {
     return (
       <div>
-        111
+        <Header />
+        <Home />
       </div>
-    )
+    );
   }
 }
 
