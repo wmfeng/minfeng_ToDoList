@@ -8,6 +8,7 @@ import Write from "./pages/write";
 import Detail from "./pages/detail/loadable";
 import store from "./store"
 
+
 class App extends Component {
   render() {
     return (
