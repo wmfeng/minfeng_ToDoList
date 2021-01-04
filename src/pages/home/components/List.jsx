@@ -12,7 +12,6 @@ class List extends PureComponent {
         */ 
         return (
             <div>
-                
                 {
                     list.map((item, index) => {
                         return (
