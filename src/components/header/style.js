@@ -30,6 +30,20 @@ export const Nav = styled.div`
   justify-content: space-between;
 `;
 
+export const NavLeft = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const SearchWrapper = styled.div`
+  
+`;
+
+export const NavRight = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const NavItem = styled.div`
   line-height: 56px;
   padding: 0 15px;
