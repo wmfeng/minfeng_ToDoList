@@ -25,7 +25,6 @@ export const Logo = styled.div`
 
 export const Nav = styled.div`
   width: 68%;
-  background: #eee;
   display: flex;
   justify-content: space-between;
 `;
@@ -36,7 +35,56 @@ export const NavLeft = styled.div`
 `;
 
 export const SearchWrapper = styled.div`
-  
+  position: relative;
+  .zoom {
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    width: 30px;
+    line-height: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: #969696;
+    &.focused {
+      background: #777;
+      color: #fff;
+    }
+  }
+`;
+
+export const NavSearch = styled.input.attrs({
+  placeholder: "搜索",
+})`
+  width: 220px;
+  height: 36px;
+  padding: 0 30px 0 20px;
+  margin-top: 9px;
+  margin-left: 20px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  border-radius: 19px;
+  background: #eee;
+  font-size: 14px;
+  color: #666;
+  &::placeholder {
+    color: #999;
+  }
+  &.focused {
+    width: 300px;
+  }
+  &.slide-enter {
+    transition: all 0.2s ease-out;
+  }
+  &.slide-enter-active {
+    width: 300px;
+  }
+  &.slide-exit {
+    transition: all 0.2s ease-out;
+  }
+  &.slide-exit-active {
+    width: 220px;
+  }
 `;
 
 export const NavRight = styled.div`
@@ -49,6 +97,65 @@ export const NavItem = styled.div`
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  cursor: pointer;
+  i {
+    padding-right: 3px;
+  }
+  &.actived {
+    color: #ea6f5a;
+  }
+`;
+
+export const SearchInfo = styled.div`
+  background: #fff;
+  position: absolute;
+  left: 0;
+  top: 56px;
+  width: 300px;
+  padding: 0 20px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+`;
+
+export const SearchInfoTitle = styled.div`
+  line-height: 20px;
+  font-size: 14px;
+  color: #969696;
+  margin-top: 20px;
+  margin-bottom: 15px;
+`;
+
+export const SearchInfoSwitch = styled.div`
+  float: right;
+  font-size: 13px;
+  cursor: pointer;
+  .iconfont{
+    font-size: 16px;
+  }
+  .spin{
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin-right: 2px;
+    transition: all 0.2s ease-in;
+    transform-origin: center center;
+  }
+`;
+
+export const SearchInfoWrapper = styled.div`
+  overflow:hidden;
+`;
+
+export const SearchInfoItem = styled.a`
+  float: left;
+  line-height: 20px;
+  padding: 0 5px;
+  margin-right: 10px;
+  margin-bottom: 15px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  color: #787878;
+  border-radius: 3px;
+  cursor: pointer;
 `;
 
 export const LoginAndWrite = styled.div`
