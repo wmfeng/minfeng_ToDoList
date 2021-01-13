@@ -68,7 +68,6 @@ class Header extends Component {
             </SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoWrapper>
-            <SearchInfoItem>高考</SearchInfoItem>
             {pageList}
           </SearchInfoWrapper>
         </SearchInfo>
@@ -125,7 +124,7 @@ class Header extends Component {
               <NavItem>
                 <i className="iconfont">&#xe636;</i>
               </NavItem>
-              <NavItem  onClick={() => this.letsGo("/login")}>登录</NavItem>
+              <NavItem onClick={() => this.letsGo("/login")}>登录</NavItem>
             </NavRight>
           </Nav>
           <LoginAndWrite>
