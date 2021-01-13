@@ -4,12 +4,12 @@ import logoImg from "../../asstes/images/log.png";
 export const HeaderWrapper = styled.header`
   width: 100%;
   height: 55px;
+  box-sizing: border-box;
+  padding: 0 10%;
   border-bottom: 1px solid #f0f0f0;
 `;
 
 export const HeaderContent = styled.div`
-  min-width: 768px;
-  max-width: 1440px;
   margin: 0 auto;
   height: 100%;
   display: flex;
@@ -20,6 +20,7 @@ export const Logo = styled.div`
   width: 100px;
   height: 56px;
   background: url(${logoImg});
+  background-repeat: no-repeat;
   background-size: contain;
 `;
 
@@ -128,10 +129,10 @@ export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
   cursor: pointer;
-  .iconfont{
+  .iconfont {
     font-size: 16px;
   }
-  .spin{
+  .spin {
     display: block;
     float: left;
     font-size: 12px;
@@ -142,7 +143,7 @@ export const SearchInfoSwitch = styled.div`
 `;
 
 export const SearchInfoWrapper = styled.div`
-  overflow:hidden;
+  overflow: hidden;
 `;
 
 export const SearchInfoItem = styled.a`

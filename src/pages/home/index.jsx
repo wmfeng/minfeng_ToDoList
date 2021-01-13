@@ -1,12 +1,12 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
+import { HomeWrapper } from "./style";
+class Home extends Component {
+  render() {
+    return <HomeWrapper>home</HomeWrapper>;
+  }
 
-class Home extends Component{
-    render(){
-        return (
-            <div>
-                home
-            </div>
-        )
-    }
+  componentDidMount() {}
+
+  componentWillUnmount() {}
 }
 export default Home;
