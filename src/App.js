@@ -7,6 +7,8 @@ import Home from "./pages/home";
 import Download from "./pages/download";
 import Write from "./pages/write";
 import Login from "./pages/login";
+
+import EventDemo from "./pages/zhufeng/EventDemo";
 class App extends Component {
   render() {
     return (
@@ -18,6 +20,8 @@ class App extends Component {
             <Route path="/download" exact component={Download} />
             <Route path="/write" exact component={Write} />
             <Route path="/login" exact component={Login} />
+
+            <Route path="/eventdemo" exact component={EventDemo} />
           </div>
         </BrowserRouter>
       </Provider>
