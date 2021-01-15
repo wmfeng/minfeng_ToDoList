@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 class EventDemo extends Component {
     constructor(props) {
         super(props);
@@ -86,11 +85,11 @@ class EventDemo extends Component {
         // 原生event如下。其__proto__.constructor 是 MouseEvent
         console.log("nativeEvent", event.nativeEvent);
         console.log("nativeEvent target", event.nativeEvent.target); //指向当前元素，即当前元素触发
-        console.log("nativeEvent current", event.nativeEvent.currentTarget); //指向document !!!
+        console.log("nativeEvent current target", event.nativeEvent.currentTarget); //指向document !!!
 
         /*
         要点!!!：
-            1.event是SyntheticEvent(组合事件)， 是react自身模拟出来的 DOM 事件，它具有事件所有的能力
+            1.event是 SyntheticEvent (组合事件)， 是react自身模拟出来的 DOM 事件，它模拟出来DOM事件所有的能力(与浏览器无关)
             2.event.nativeEvent是原生事件对象
             3.所有的事件都被挂载到 document 上
             4.和DOM事件不一样，和vue事件也不一样
@@ -102,8 +101,6 @@ class EventDemo extends Component {
         console.log(id,title);
         console.log("event", event);
     }
-
-
 }
 
 export default EventDemo;
