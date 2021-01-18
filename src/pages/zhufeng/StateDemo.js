@@ -65,9 +65,6 @@ class StateDemo extends Component {
             obj1: Object.assign({}, this.state.obj1, { a: 12 }),
             obj2: { ...this.state.obj2, a: 213 }
         })
-        
-
-
     }
 }
 export default StateDemo;
