@@ -116,28 +116,5 @@ class StateDemo extends Component {
             obj2: { ...this.state.obj2, a: 213 }
         })
     }
-
-    bodyHandleClick = () => {
-        this.setState({
-            count: this.state.count + 1
-        })
-        console.log('count in body event', this.state.count)
-    }
-
-    componentDidMount() {
-        // 自己定义的 DOM 事件， setState 是同步的
-        // document.body.addEventListener("click", this.bodyHandleClick)
-    }
-
-    componentWillUnmount() {
-        // 及时销毁自定义 DOM 事件
-        document.body.removeEventListener("click", this.bodyHandleClick)
-        clearTimeout(setTimeout(() => {
-            this.setState({
-                count: this.state.count + 1
-            })
-            console.log("settimeout count", this.state.count)
-        }, 0))
-    }
 }
 export default StateDemo;
