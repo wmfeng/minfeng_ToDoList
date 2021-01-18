@@ -16,6 +16,13 @@ import ToDoListTwo from "./pages/toDoList/two/index.jsx";
 // ZhuFeng
 import EventDemo from "./pages/zhufeng/EventDemo";
 import FormDemo from "./pages/zhufeng/FormDemo";
+import StateDemo from "./pages/zhufeng/StateDemo";
+import UnControlledDemo from "./pages/zhufeng/UnControlledDemo";
+import PortalsDemo from "./pages/zhufeng/PortalsDemo";
+import ContextDemo from "./pages/zhufeng/ContextDemo";
+import LazyDemo from "./pages/zhufeng/LazyDemo";
+import SeoDemo from "./pages/zhufeng/SeoDemo";
+import PropsDemo from "./pages/zhufeng/PropsDemo";
 class App extends Component {
   render() {
     return (
@@ -36,6 +43,13 @@ class App extends Component {
             {/* ZhuFeng */}
             <Route path="/eventdemo" exact component={EventDemo} />
             <Route path="/formdemo" exact component={FormDemo} />
+            <Route path="/statedemo" exact component={StateDemo} />
+            <Route path="/uncontrolleddemo" exact component={UnControlledDemo} />
+            <Route path="/portalsdemo" exact component={PortalsDemo} />
+            <Route path="/contextdemo" exact component={ContextDemo} />
+            <Route path="/lazydemo" exact component={LazyDemo} />
+            <Route path="/seodemo" exact component={SeoDemo} />
+            <Route path="/propsdemo" exact component={PropsDemo} />
           </div>
         </BrowserRouter>
       </Provider>
