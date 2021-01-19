@@ -57,7 +57,7 @@ class List extends Component {
   //增加 shouleComponentUpdate
   shouldComponentUpdate(nextProps, nextState) {
     const { list } = this.props;
-    //   _.isEqual 做对象或者数组的深度比较
+    //   _.isEqual 做对象或者数组的深度比较（比较耗费性能，一次性递归，不建议用词方法）
     if (_.isEqual(nextProps.list, list)) {
       return false; //相等，则不重复渲染
     }
