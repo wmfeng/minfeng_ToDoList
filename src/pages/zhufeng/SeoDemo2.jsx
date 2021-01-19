@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import _ from "lodash"
 
 class Input extends Component {
   constructor(props) {
@@ -52,6 +53,16 @@ class List extends Component {
       </ul>
     );
   }
+
+  //增加 shouleComponentUpdate
+  shouldComponentUpdate(nextProps, nextState) {
+    const { list } = this.props;
+    //   _.isEqual 做对象或者数组的深度比较
+    if (_.isEqual(nextProps.list, list)) {
+      return false; //相等，则不重复渲染
+    }
+    return true; // 不相等，则渲染
+  }
 }
 
 // props类型检查
@@ -59,36 +70,7 @@ class List extends Component {
 //     list: PropTypes.arrayOf(PropTypes.object).isRequired
 // }
 
-class Footer extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    const { foot, length } = this.props;
-    return (
-      <div>
-        {foot}--{length}
-      </div>
-    );
-  }
-
-  componentDidMount() {
-    console.log("footer did update");
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-    if (nextProps.foot !== this.props.foot || nextProps.length !== this.props.length) {
-      return true;
-    }
-    return false;
-  }
-  /* 
-        React默认： 父组件更新， 子组件无条件更新
-        性能优化对于 React 更加重要
-        当需要时再使用 shouldComponentUpdate 否则 无需使用
-    */
-}
-
-class PropsDemo extends Component {
+class SeoDemo2 extends Component {
   constructor(props) {
     super(props);
     // 状态(数据)提升
@@ -107,17 +89,15 @@ class PropsDemo extends Component {
           title: "标题三",
         },
       ],
-      foot: "文档底部",
     };
   }
 
   render() {
-    const { list, foot } = this.state;
+    const { list } = this.state;
     return (
       <div>
         <Input submitTitle={this.onSubmitTitle} />
         <List list={list} />
-        <Footer foot={foot} length={list.length} />
       </div>
     );
   }
@@ -132,4 +112,4 @@ class PropsDemo extends Component {
   };
 }
 
-export default PropsDemo;
+export default SeoDemo2;

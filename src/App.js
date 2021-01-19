@@ -23,6 +23,7 @@ import ContextDemo from "./pages/zhufeng/ContextDemo";
 import LazyDemo from "./pages/zhufeng/LazyDemo";
 import SeoDemo from "./pages/zhufeng/SeoDemo";
 import PropsDemo from "./pages/zhufeng/PropsDemo";
+import SeoDemo2 from "./pages/zhufeng/SeoDemo2";
 class App extends Component {
   render() {
     return (
@@ -50,6 +51,7 @@ class App extends Component {
             <Route path="/lazydemo" exact component={LazyDemo} />
             <Route path="/seodemo" exact component={SeoDemo} />
             <Route path="/propsdemo" exact component={PropsDemo} />
+            <Route path="/seodemo2" exact component={SeoDemo2} />
           </div>
         </BrowserRouter>
       </Provider>
