@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 class Input extends Component {
   constructor(props) {
@@ -39,9 +39,9 @@ class Input extends Component {
 // }
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     const { list } = this.props;
     return (
@@ -60,9 +60,9 @@ class List extends Component {
 // }
 
 class Footer extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     const { foot, length } = this.props;
     return (

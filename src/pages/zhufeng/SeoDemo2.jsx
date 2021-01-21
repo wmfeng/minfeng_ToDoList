@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import _ from "lodash"
 
+
+/* 
+SCU默认返回true ,即 React 默认重新渲染所有子组件
+必须配合  “不可变值”  一起使用
+可先不用 SCU  ，有性能问题时再考虑使用
+*/
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -40,9 +46,9 @@ class Input extends Component {
 // }
 
 class List extends Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   render() {
     const { list } = this.props;
     return (
@@ -57,7 +63,7 @@ class List extends Component {
   //增加 shouleComponentUpdate
   shouldComponentUpdate(nextProps, nextState) {
     const { list } = this.props;
-    //   _.isEqual 做对象或者数组的深度比较（比较耗费性能，一次性递归，不建议用词方法）
+    //   _.isEqual 做对象或者数组的深度比较（比较耗费性能，一次性递归到底，不建议用词方法）
     if (_.isEqual(nextProps.list, list)) {
       return false; //相等，则不重复渲染
     }
